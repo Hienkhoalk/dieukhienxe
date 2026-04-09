@@ -20,6 +20,55 @@ const JOINTS_WITH_NAMES = [
     { id: 6, label: 'Gripper' }
 ];
 
+const eraWidget = new EraWidget();
+
+
+eraWidget.init({
+  onConfiguration: (configuration) => {
+    action = configuration.actions;
+    pressUpConfig = configuration.actions[0];
+    releaseUpConfig = configuration.actions[1];
+    pressDownConfig = configuration.actions[2];
+    releaseDownConfig = configuration.actions[3];
+    pressLeftConfig = configuration.actions[4];
+    releaseLeftConfig = configuration.actions[5];
+    pressRightConfig = configuration.actions[6];
+    releaseRightConfig = configuration.actions[7];
+    PickConfig = configuration.actions[8];
+    DropConfig = configuration.actions[9];
+    
+  },
+});
+
+function pressing(direction){
+    if (direction == 'up'){
+        eraWidget.triggerAction(action[0]?.action, null);
+    } else if (direction == 'down'){
+        eraWidget.triggerAction(action[2]?.action, null);
+    } else if (direction == 'left'){
+        eraWidget.triggerAction(action[4]?.action, null);
+    } else if (direction == 'right'){
+        eraWidget.triggerAction(action[6]?.action, null);
+    }
+}
+function release(direction){
+    if (direction == 'up'){
+        eraWidget.triggerAction(action[1]?.action, null);
+    } else if (direction == 'down'){
+        eraWidget.triggerAction(action[3]?.action, null);
+    } else if (direction == 'left'){
+        eraWidget.triggerAction(action[5]?.action, null);
+    } else if (direction == 'right'){
+        eraWidget.triggerAction(action[7]?.action, null);
+    }
+}
+function manualPick(){
+    eraWidget.triggerAction(action[8]?.action, null);
+}
+function manualDrop(){
+    eraWidget.triggerAction(action[9]?.action, null);
+}
+
 // --- 2. KHỞI TẠO HỆ THỐNG ---
 function initDashboard() {
     const armHeader = document.querySelector('.arm-panel-header');
@@ -69,11 +118,6 @@ function formatDuration(ms) {
     const m = Math.floor(totalSeconds / 60);
     const s = totalSeconds % 60;
     return m > 0 ? `${m}p ${s}s` : `${s} giây`;
-}
-
-// --- 4. GIAO TIẾP VỚI E-RA API ---
-function sendToEra(pin, value) {
-    console.log(`[E-RA TX] Pin: ${pin} | Val: ${value}`);
 }
 
 function setMode(mode) {

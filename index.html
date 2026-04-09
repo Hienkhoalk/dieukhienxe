@@ -79,15 +79,15 @@
                 <div class="d-pad-container">
                     <div class="d-pad">
                         <div class="empty"></div>
-                        <button class="btn-dir" onmousedown="move('F')" onmouseup="move('S')"><span>⯅</span></button>
+                        <button class="btn-dir" onmousedown="pressing('up')" onmouseup="release('up')"><span>⯅</span></button>
                         <div class="empty"></div>
 
-                        <button class="btn-dir" onmousedown="move('L')" onmouseup="move('S')"><span>⯇</span></button>
-                        <button class="btn-stop" onclick="move('FORCE_STOP')"><span>STOP</span></button>
-                        <button class="btn-dir" onmousedown="move('R')" onmouseup="move('S')"><span>⯈</span></button>
+                        <button class="btn-dir" onmousedown="pressing('left')" onmouseup="release('left')"><span>⯇</span></button>
+                        <button class="btn-stop" onclick="click('FORCE_STOP')"><span>STOP</span></button>
+                        <button class="btn-dir" onmousedown="pressing('right')" onmouseup="release('right')"><span>⯈</span></button>
 
                         <div class="empty"></div>
-                        <button class="btn-dir" onmousedown="move('B')" onmouseup="move('S')"><span>⯆</span></button>
+                        <button class="btn-dir" onmousedown="pressing('back')" onmouseup="release('back')"><span>⯆</span></button>
                         <div class="empty"></div>
                     </div>
 
